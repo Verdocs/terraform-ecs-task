@@ -26,12 +26,12 @@ variable "service_cluster_arn" {
 
 variable "service_desired_count" {
   default = 1
-  type = number
+  type    = number
 }
 
 variable "service_platform_version" {
   default = "LATEST"
-  type = string
+  type    = string
 }
 
 variable "service_launch_type" {
@@ -42,7 +42,13 @@ variable "service_launch_type" {
 
 variable "service_assign_public_ip" {
   default = true
-  type = bool
+  type    = bool
+}
+
+// Default set as per https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html
+variable "service_health_check_grace_period_seconds" {
+  default = 0
+  type    = number
 }
 
 
@@ -61,17 +67,17 @@ variable "task_family" {
 
 variable "task_cpu" {
   default = 1024
-  type = number
+  type    = number
 }
 
 variable "task_memory" {
   default = 2048
-  type = number
+  type    = number
 }
 
 variable "task_network_mode" {
   default = "awsvpc"
-  type = string
+  type    = string
 }
 
 variable "task_container_definitions" {
@@ -101,7 +107,7 @@ variable "lb_app_port" {
 
 variable "lb_type" {
   default = "network"
-  type = string
+  type    = string
 }
 
 variable "lb_subnets" {
@@ -111,7 +117,7 @@ variable "lb_subnets" {
 
 variable "lb_deletion_protection" {
   default = false
-  type = bool
+  type    = bool
 }
 
 variable "lb_container_name" {
@@ -124,30 +130,30 @@ variable "lb_target_group_name" {
 
 variable "lb_health_check_interval" {
   default = 30
-  type = number
+  type    = number
 }
 
 variable "lb_health_check_path" {
   default = "/health_check"
-  type = string
+  type    = string
 }
 
 variable "lb_protocol" {
   default = "HTTP"
-  type = string
+  type    = string
 }
 
 variable "lb_target_type" {
   default = "ip"
-  type = string
+  type    = string
 }
 
 variable "lb_listener_port" {
   default = 80
-  type = number
+  type    = number
 }
 
 variable "lb_listener_action_type" {
   default = "forward"
-  type = string
+  type    = string
 }

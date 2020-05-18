@@ -10,13 +10,14 @@ resource "aws_ecs_task_definition" "main_task" {
 }
 
 resource "aws_ecs_service" "target_service" {
-  name             = var.service_name
-  task_definition  = aws_ecs_task_definition.main_task.arn
-  cluster          = var.service_cluster_arn
-  desired_count    = var.service_desired_count
-  launch_type      = var.service_launch_type
-  platform_version = var.service_platform_version
-  depends_on       = [aws_lb_listener.target_lb_listener]
+  name                              = var.service_name
+  task_definition                   = aws_ecs_task_definition.main_task.arn
+  cluster                           = var.service_cluster_arn
+  desired_count                     = var.service_desired_count
+  launch_type                       = var.service_launch_type
+  platform_version                  = var.service_platform_version
+  depends_on                        = [aws_lb_listener.target_lb_listener]
+  health_check_grace_period_seconds = var.service_health_check_grace_period_seconds
 
   network_configuration {
     subnets          = var.lb_subnets
