@@ -9,9 +9,12 @@ variable "env" {
   description = "Indicates the environment of this terraform"
 }
 
+
+
 variable "service_name" {
   type = string
 }
+
 variable "service_security_groups" {
   type        = string
   description = "Security group of service"
